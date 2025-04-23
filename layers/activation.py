@@ -8,7 +8,9 @@ class Activation(Layer):
 
     def forwards(self, input):
         self.input = input
+        # print("Input: ", self.input.T, "Output: ", self.activation(input).T) --> debug
         return self.activation(input)
     
     def backwards(self, output_gradient, learning_rate):
+        #print("Output_gradient: ", output_gradient.T, "Input_gradient: ", self.activation_prime(self.input).T)
         return np.multiply(output_gradient, self.activation_prime(self.input))
